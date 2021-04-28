@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="026a7bfd-2939-48f0-af52-4f06bd649720" >
+		<http:listener-connection host="localhost" port="8081" />
+	</http:listener-config>
+	<flow name="dummy-fa3Flow" doc:id="06233f59-98d6-4797-b071-c37e980239e4" >
+		<http:listener doc:name="Listener" doc:id="bc7a1ce8-203a-4924-a58a-d2b63bc8a139" config-ref="HTTP_Listener_config" path="/dummy"/>
+		<set-payload value="#['Hiiii Santhaanam']" doc:name="Set Payload" doc:id="2aa5ac95-86ae-4f28-8d8e-7bc9963d226d" />
+	</flow>
+</mule>
