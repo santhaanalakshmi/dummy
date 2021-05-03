@@ -13,13 +13,14 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-		<app.runtime>4.3.0-20210304</app.runtime>
+		<app.runtime>4.3.0-20210119</app.runtime>
 		<mule.maven.plugin.version>3.4.2</mule.maven.plugin.version>
 	    <sonar.sources>src/main/mule</sonar.sources>
         <sonar.tests/>
 	<munit.version>2.3.2</munit.version>
     </properties>
-
+    
+          
 	<build>
 		<plugins>
 			<plugin>
@@ -36,8 +37,8 @@
 				 
                       <cloudHubDeployment>
                         <uri>https://anypoint.mulesoft.com</uri>
-                        <username>kotakashyap012</username>
-                        <password>password</password>
+                        <username>Santhaanalakshmi_E</username>
+                        <password>Santhaanam@1</password>
                         <environment>Sandbox</environment>
                         <muleVersion>4.3.0</muleVersion>
                         <workers>1</workers>
@@ -47,7 +48,28 @@
                     </cloudHubDeployment>
 				</configuration>
 			</plugin>
-		<plugin>
+		
+            <plugin>    
+              <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>1.6.6</version>
+                 <extensions>true</extensions>
+                <configuration>
+                    <serverId>nexus</serverId>
+                    <nexusUrl>http://localhost:8091/nexus/</nexusUrl>
+                    <skipStaging>true</skipStaging>
+                </configuration>
+                <executions>
+                       <execution>
+                         <id>default-deploy</id>
+                         <phase>deploy</phase>
+                         <goals>
+                           <goal>deploy</goal>
+                         </goals>
+                       </execution>
+                </executions>   
+            </plugin>
+               <plugin>		
                 <groupId>com.mulesoft.munit.tools</groupId>
                 <artifactId>munit-maven-plugin</artifactId>
                 <version>${munit.version}</version>
@@ -62,7 +84,9 @@
                     </execution>
                 </executions>
                 <configuration>
+                    <runtimeVersion>4.3.0-20210119</runtimeVersion>
                     <coverage>
+                    
                         <runCoverage>true</runCoverage>
                         <formats>
                             <format>html</format>
